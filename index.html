@@ -6,31 +6,52 @@
     <title>STRIVE X - Survival of the Fittest</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Dark Mode (Default) */
         :root {
             --primary-blue: #1e3a5f;
             --primary-orange: #ff8c42;
-            --dark-bg: #0f1419;
+            --bg-primary: #0f1419;
+            --bg-secondary: #1a1f2e;
             --card-bg: #1a1f2e;
-            --text-light: #e8eaed;
-            --text-gray: #9aa0a6;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --border-color: rgba(255, 140, 66, 0.2);
+            --shadow: rgba(0, 0, 0, 0.3);
             --success: #34a853;
             --danger: #ea4335;
         }
+
+        /* Light Mode */
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --card-bg: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --border-color: rgba(255, 140, 66, 0.3);
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
-            color: var(--text-light);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
         }
+
         header {
-            background: rgba(30, 58, 95, 0.95);
+            background: var(--card-bg);
             backdrop-filter: blur(10px);
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px var(--shadow);
+            border-bottom: 1px solid var(--border-color);
         }
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -38,43 +59,76 @@
             max-width: 1400px;
             margin: 0 auto;
         }
+
         .logo-container {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-        .logo { height: 50px; width: auto; }
+
+        .logo { 
+            height: 50px; 
+            width: auto;
+            filter: brightness(1);
+        }
+
+        [data-theme="light"] .logo {
+            filter: brightness(0.9);
+        }
+
         .tagline {
             font-size: 0.9rem;
             color: var(--primary-orange);
             font-weight: 600;
             letter-spacing: 1px;
         }
+
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
         }
+
         .nav-links a {
-            color: var(--text-light);
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
+
         .nav-links a:hover {
             color: var(--primary-orange);
         }
+
         .user-section {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            border-color: var(--primary-orange);
+        }
+
         .hero {
             text-align: center;
             padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(30, 58, 95, 0.3), rgba(255, 140, 66, 0.1));
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
             border-bottom: 2px solid var(--primary-orange);
         }
+
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
@@ -83,100 +137,125 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .hero p {
             font-size: 1.5rem;
-            color: var(--text-gray);
+            color: var(--text-secondary);
             margin-bottom: 1rem;
         }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
         }
+
         .login-section {
             max-width: 500px;
             margin: 3rem auto;
             background: var(--card-bg);
             padding: 3rem;
             border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 140, 66, 0.2);
+            box-shadow: 0 8px 32px var(--shadow);
+            border: 1px solid var(--border-color);
         }
+
         .login-section h2 {
             color: var(--primary-orange);
             margin-bottom: 2rem;
             text-align: center;
         }
+
         .form-group {
             margin-bottom: 1.5rem;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--text-gray);
+            color: var(--text-secondary);
         }
+
         .form-group input {
             width: 100%;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 140, 66, 0.3);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            color: var(--text-light);
+            color: var(--text-primary);
             font-size: 1rem;
         }
+
         .form-group input:focus {
             outline: none;
             border-color: var(--primary-orange);
         }
+
         .dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
+
         .card {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 2rem;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px var(--shadow);
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 140, 66, 0.1);
+            border: 1px solid var(--border-color);
         }
+
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(255, 140, 66, 0.2);
         }
+
         .card h2 {
             color: var(--primary-orange);
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
+
+        .card p {
+            color: var(--text-secondary);
+        }
+
         .card-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
+
         .admin-panel {
-            background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(255, 140, 66, 0.1));
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
             border-radius: 15px;
             padding: 2rem;
             margin-bottom: 3rem;
             border: 2px solid var(--primary-orange);
         }
+
         .admin-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
         }
+
+        .admin-header h2 {
+            color: var(--text-primary);
+        }
+
         .admin-actions {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
         }
+
         .admin-btn {
             background: var(--card-bg);
             border: 2px solid var(--primary-orange);
-            color: var(--text-light);
+            color: var(--text-primary);
             padding: 1.5rem;
             border-radius: 10px;
             cursor: pointer;
@@ -184,10 +263,13 @@
             font-size: 1rem;
             font-weight: 600;
         }
+
         .admin-btn:hover {
             background: var(--primary-orange);
+            color: white;
             transform: scale(1.05);
         }
+
         .btn {
             background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
             color: white;
@@ -200,17 +282,22 @@
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
         }
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 140, 66, 0.5);
         }
+
         .btn-secondary {
             background: var(--card-bg);
             border: 2px solid var(--primary-orange);
+            color: var(--text-primary);
         }
+
         .content-section {
             margin-bottom: 3rem;
         }
+
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -219,22 +306,30 @@
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--primary-orange);
         }
+
+        .section-header h2 {
+            color: var(--text-primary);
+        }
+
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
+
         .content-card {
             background: var(--card-bg);
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s;
-            border: 1px solid rgba(255, 140, 66, 0.1);
+            border: 1px solid var(--border-color);
         }
+
         .content-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
         }
+
         .content-thumbnail {
             width: 100%;
             height: 160px;
@@ -244,33 +339,40 @@
             justify-content: center;
             font-size: 3rem;
         }
+
         .content-info {
             padding: 1.5rem;
         }
+
         .forum-section {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 2rem;
             margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
         }
+
         .forum-post {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--bg-secondary);
             padding: 1.5rem;
             border-radius: 10px;
             margin-bottom: 1rem;
             border-left: 4px solid var(--primary-orange);
         }
+
         .post-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
         }
+
         .post-author {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
+
         .avatar {
             width: 40px;
             height: 40px;
@@ -280,46 +382,58 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            color: white;
         }
+
         .ai-badge {
             background: linear-gradient(135deg, #4285f4, #34a853);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 600;
+            color: white;
         }
+
         .post-actions {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
+
         .action-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: var(--text-light);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
             padding: 0.5rem 1rem;
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
         }
+
         .action-btn:hover {
             background: var(--primary-orange);
+            color: white;
         }
+
         .hidden {
             display: none !important;
         }
+
         .user-info {
             background: rgba(255, 140, 66, 0.1);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
+            border: 1px solid var(--border-color);
         }
+
         .error-msg {
             color: var(--danger);
             text-align: center;
             margin-top: 1rem;
             font-size: 0.9rem;
         }
+
         footer {
             background: var(--card-bg);
             padding: 2rem;
@@ -327,10 +441,16 @@
             margin-top: 4rem;
             border-top: 2px solid var(--primary-orange);
         }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .nav-links { display: none; }
             .dashboard { grid-template-columns: 1fr; }
+            .admin-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -348,6 +468,7 @@
                 <li><a href="#forum">Forum</a></li>
             </ul>
             <div class="user-section">
+                <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌙</button>
                 <div class="user-info hidden" id="userInfo"></div>
                 <button class="btn" id="authBtn" onclick="handleAuth()">Login</button>
             </div>
@@ -357,7 +478,7 @@
     <section class="hero">
         <h1>STRIVE X</h1>
         <p>SURVIVAL OF THE FITTEST</p>
-        <p style="font-size: 1.1rem; color: var(--text-gray);">Compete, Learn, Excel - Where Only the Best Thrive</p>
+        <p style="font-size: 1.1rem; color: var(--text-secondary);">Compete, Learn, Excel - Where Only the Best Thrive</p>
     </section>
 
     <!-- Login Section -->
@@ -448,7 +569,7 @@
                     <button class="btn-secondary btn">Filter by Subject</button>
                 </div>
                 <div class="content-grid" id="classesGrid">
-                    <p style="color: var(--text-gray); text-align: center; padding: 2rem;">No classes available yet. Admin can upload classes from the control panel.</p>
+                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No classes available yet. Admin can upload classes from the control panel.</p>
                 </div>
             </div>
 
@@ -459,7 +580,7 @@
                     <button class="btn-secondary btn">View All</button>
                 </div>
                 <div class="content-grid" id="assignmentsGrid">
-                    <p style="color: var(--text-gray); text-align: center; padding: 2rem;">No assignments available yet. Admin can create assignments from the control panel.</p>
+                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No assignments available yet. Admin can create assignments from the control panel.</p>
                 </div>
             </div>
 
@@ -469,16 +590,16 @@
                     <h2>💬 Discussion Forum</h2>
                     <button class="btn">Ask a Question</button>
                 </div>
-                <p style="color: var(--text-gray); text-align: center; padding: 2rem;">No discussions yet. Be the first to ask a question!</p>
+                <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">No discussions yet. Be the first to ask a question!</p>
             </div>
         </div>
     </div>
 
     <footer>
         <h3 style="color: var(--primary-orange); margin-bottom: 1rem;">STRIVE X</h3>
-        <p style="color: var(--text-gray); margin-bottom: 1rem;">SURVIVAL OF THE FITTEST</p>
-        <p style="color: var(--text-gray); font-size: 0.9rem;">© 2025 STRIVE X Educational Platform. All rights reserved.</p>
-        <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 0.5rem;">Empowering students through competitive learning and gamification</p>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">SURVIVAL OF THE FITTEST</p>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">© 2025 STRIVE X Educational Platform. All rights reserved.</p>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Empowering students through competitive learning and gamification</p>
     </footer>
 
     <script>
@@ -487,8 +608,40 @@
         
         let currentUser = null;
 
+        // Theme Management
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            const currentTheme = html.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                html.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('strivex_theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('strivex_theme', 'light');
+            }
+        }
+
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('strivex_theme');
+            const themeToggle = document.getElementById('themeToggle');
+            
+            if (savedTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        }
+
         // Check if user is already logged in
         window.onload = function() {
+            loadTheme();
+            
             const savedUser = localStorage.getItem('strivex_user');
             if (savedUser) {
                 currentUser = JSON.parse(savedUser);
@@ -564,6 +717,12 @@
 
         // Handle Enter key on login
         document.getElementById('passwordInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
+        
+        document.getElementById('emailInput')?.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 login();
             }
