@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRIVE X - Survival of the Fittest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e3a5f;
+            --primary-orange: #ff8c42;
+            --dark-bg: #0f1419;
+            --card-bg: #1a1f2e;
+            --text-light: #e8eaed;
+            --text-gray: #9aa0a6;
+            --success: #34a853;
+            --warning: #fbbc04;
+            --danger: #ea4335;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(30, 58, 95, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--primary-orange);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .level-badge {
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.3), rgba(255, 140, 66, 0.1));
+            border-bottom: 2px solid var(--primary-orange);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 140, 66, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(255, 140, 66, 0.2);
+        }
+
+        .card h2 {
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 140, 66, 0.2);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .level-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .level-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(255, 140, 66, 0.4);
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-orange), #ff6b35);
+            transition: width 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            color: var(--primary-orange);
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .admin-panel {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(255, 140, 66, 0.1));
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 2px solid var(--primary-orange);
+        }
+
+        .admin-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .admin-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-orange);
+            color: var(--text-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .admin-btn:hover {
+            background: var(--primary-orange);
+            transform: scale(1.05);
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-orange);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 140, 66, 0.1);
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
+        }
+
+        .content-thumbnail {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .content-info {
+            padding: 1.5rem;
+        }
+
+        .content-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .content-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .forum-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .forum-post {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .ai-badge {
+            background: linear-gradient(135deg, #4285f4, #34a853);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-orange);
+        }
+
+        .live-class {
+            background: linear-gradient(135deg, rgba(234, 67, 53, 0.2), rgba(251, 188, 4, 0.2));
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 2px solid var(--danger);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(234, 67, 53, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(234, 67, 53, 0.6); }
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--danger);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 140, 66, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-orange);
+        }
+
+        .rewards-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .reward-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .reward-item:hover {
+            transform: scale(1.05);
+        }
+
+        .reward-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reward-locked {
+            opacity: 0.3;
+            filter: grayscale(100%);
+        }
+
+        footer {
+            background: var(--card-bg);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 2px solid var(--primary-orange);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .level-circle {
+                width: 70px;
+                height: 70px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/53a5542c-87de-4dae-83da-c5d1ce7dc746/2025-11-30T18-23-57-139Z-0f3f5855-chat-image-1764527037121-0.jpg" alt="STRIVE X Logo" class="logo">
+                <span class="tagline">SURVIVAL OF THE FITTEST</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#classes">Classes</a></li>
+                <li><a href="#assignments">Assignments</a></li>
+                <li><a href="#forum">Forum</a></li>
+                <li><a href="#admin">Admin</a></li>
+            </ul>
+            <div class="user-section">
+                <div class="level-badge">Level 7 🏆</div>
+                <button class="btn">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>STRIVE X</h1>
+        <p>SURVIVAL OF THE FITTEST</p>
+        <p style="font-size: 1.1rem; color: var(--text-gray);">Compete, Learn, Excel - Where Only the Best Thrive</p>
+    </section>
+
+    <div class="container">
+        <div class="live-class">
+            <div class="live-indicator">
+                <span class="live-dot"></span>
+                LIVE NOW
+            </div>
+            <h2>Advanced Physics - Quantum Mechanics</h2>
+            <p>Join the live session with Prof. Sharma</p>
+            <button class="btn" style="margin-top: 1rem;">Join Class 🎥</button>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-header">
+                <div class="level-info">
+                    <div class="level-circle">7</div>
+                    <div>
+                        <h2>Your Progress</h2>
+                        <p style="color: var(--text-gray);">Keep pushing to reach Level 8!</p>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 2rem; color: var(--primary-orange); font-weight: bold;">2,450 XP</div>
+                    <div style="color: var(--text-gray);">550 XP to next level</div>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%;">75%</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">45</div>
+                    <div class="stat-label">Videos Watched</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">32</div>
+                    <div class="stat-label">Assignments Done</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">28</div>
+                    <div class="stat-label">DPPs Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">Avg Test Score</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="admin" class="admin-panel">
+            <div class="admin-header">
+                <h2>🔐 Admin Control Panel</h2>
+                <span style="color: var(--primary-orange); font-weight: 600;">Full Access Mode</span>
+            </div>
+            <div class="admin-actions">
+                <button class="admin-btn">📹 Upload Recorded Class</button>
+                <button class="admin-btn">📝 Upload Notes/Study Material</button>
+                <button class="admin-btn">📋 Create Assignment</button>
+                <button class="admin-btn">📊 Create DPP</button>
+                <button class="admin-btn">🎯 Create Test</button>
+                <button class="admin-btn">🎥 Schedule Live Class</button>
+                <button class="admin-btn">👥 Manage Students</button>
+                <button class="admin-btn">📈 View Analytics</button>
+            </div>
+        </div>
+
+        <div id="dashboard" class="dashboard">
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h2>Recorded Classes</h2>
+                <p>Access all recorded video lectures organized by subject and topic</p>
+                <button class="btn" style="margin-top: 1rem;">Browse Classes</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📝</div>
+                <h2>Notes & Materials</h2>
+                <p>Download comprehensive study notes and reference materials</p>
+                <button class="btn" style="margin-top: 1rem;">View Notes</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">✍️</div>
+                <h2>Assignments</h2>
+                <p>Complete assignments to earn XP and improve your ranking</p>
+                <button class="btn" style="margin-top: 1rem;">View Assignments</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h2>DPPs</h2>
+                <p>Daily Practice Problems to sharpen your skills</p>
+                <button class="btn" style="margin-top: 1rem;">Start DPP</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h2>Tests</h2>
+                <p>Take tests to evaluate your preparation and earn rewards</p>
+                <button class="btn" style="margin-top: 1rem;">Take Test</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🏆</div>
+                <h2>Leaderboard</h2>
+                <p>See where you stand among your peers</p>
+                <button class="btn" style="margin-top: 1rem;">View Rankings</button>
+            </div>
+        </div>
+
+        <div id="classes" class="content-section">
+            <div class="section-header">
+                <h2>📹 Recorded Classes</h2>
+                <button class="btn-secondary btn">Filter by Subject</button>
+            </div>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-thumbnail">🔬</div>
+                    <div class="content-info">
+                        <h3 class="content-title">Physics - Thermodynamics</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Prof. Sharma • 2 hours</p>
+                        <div class="content-meta">
+                            <span>⭐ 4.8/5</span>
+                            <span>+50 XP</span>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 1rem;">Watch Now</button>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="content-thumbnail">🧮</div>
+                    <div class="content-info">
+                        <h3 class="content-title">Mathematics - Calculus</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Prof. Kumar • 1.5 hours</p>
+                        <div class="content-meta">
+                            <span>⭐ 4.9/5</span>
+                            <span>+50 XP</span>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 1rem;">Watch Now</button>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="content-thumbnail">⚗️</div>
+                    <div class="content-info">
+                        <h3 class="content-title">Chemistry - Organic Reactions</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Prof. Patel • 1.8 hours</p>
+                        <div class="content-meta">
+                            <span>⭐ 4.7/5</span>
+                            <span>+50 XP</span>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 1rem;">Watch Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="assignments" class="content-section">
+            <div class="section-header">
+                <h2>📋 Active Assignments</h2>
+                <button class="btn-secondary btn">View All</button>
+            </div>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-info">
+                        <h3 class="content-title">Physics Assignment #12</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Due: Dec 5, 2025</p>
+                        <div style="margin: 1rem 0;">
+                            <div class="progress-bar" style="height: 20px;">
+                                <div class="progress-fill" style="width: 60%; font-size: 0.8rem;">60%</div>
+                            </div>
+                        </div>
+                        <div class="content-meta">
+                            <span>15 Questions</span>
+                            <span>+100 XP</span>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 1rem;">Continue</button>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="content-info">
+                        <h3 class="content-title">Math Problem Set #8</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Due: Dec 3, 2025</p>
+                        <div style="margin: 1rem 0;">
+                            <div class="progress-bar" style="height: 20px;">
+                                <div class="progress-fill" style="width: 0%; font-size: 0.8rem;">Not Started</div>
+                            </div>
+                        </div>
+                        <div class="content-meta">
+                            <span>20 Questions</span>
+                            <span>+120 XP</span>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 1rem;">Start Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rewards-section">
+            <h2>🏆 Your Achievements & Rewards</h2>
+            <div class="rewards-grid">
+                <div class="reward-item">
+                    <div class="reward-icon">🥇</div>
+                    <div style="font-weight: 600;">First Place</div>
+                    <div style="font-size: 0.8rem; color: var(--text-gray);">Top Scorer</div>
+                </div>
+                <div class="reward-item">
+                    <div class="reward-icon">🔥</div>
+                    <div style="font-weight: 600;">30 Day Streak</div>
+                    <div style="font-size: 0.8rem; color: var(--text-gray);">Consistency</div>
+                </div>
+                <div class="reward-item">
+                    <div class="reward-icon">⚡</div>
+                    <div style="font-weight: 600;">Speed Demon</div>
+                    <div style="font-size: 0.8rem; color: var(--text-gray);">Fast Learner</div>
+                </div>
+                <div class="reward-item">
+                    <div class="reward-icon">📚</div>
+                    <div style="font-weight: 600;">Bookworm</div>
+                    <div style="font-size: 0.8rem; color: var(--text-gray);">50 Videos</div>
+                </div>
+                <div class="reward-item reward-locked">
+                    <div class="reward-icon">👑</div>
+                    <div style="font-weight: 600;">Master</div>
+                    <div style="font-size: 0.8rem; color: var(--text-gray);">Level 10</div>
+                </div>
+                <div class="reward-item reward-locked">
+                    <div class="reward-icon">💎</div>
+                    <div style="font-weight: 600;">Diamond</div>
+                    <div style="font-size: 0.8rem; color: var(--text-gray);">5000 XP</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="forum" class="forum-section">
+            <div class="section-header">
+                <h2>💬 Discussion Forum</h2>
+                <button class="btn">Ask a Question</button>
+            </div>
+
+            <div class="forum-post">
+                <div class="post-header">
+                    <div class="post-author">
+                        <div class="avatar">RK</div>
+                        <div>
+                            <div style="font-weight: 600;">Rahul Kumar</div>
+                            <div style="font-size: 0.8rem; color: var(--text-gray);">2 hours ago</div>
+                        </div>
+                    </div>
+                    <span style="color: var(--primary-orange);">Level 6</span>
+                </div>
+                <h3 style="margin-bottom: 0.5rem;">How to solve integration by parts?</h3>
+                <p style="color: var(--text-gray);">I'm struggling with the concept of integration by parts in calculus. Can someone explain the ILATE rule?</p>
+                <div class="post-actions">
+                    <button class="action-btn">👍 12 Helpful</button>
+                    <button class="action-btn">💬 5 Replies</button>
+                    <button class="action-btn">🔖 Save</button>
+                </div>
+            </div>
+
+            <div class="forum-post" style="border-left-color: #4285f4;">
+                <div class="post-header">
+                    <div class="post-author">
+                        <div class="avatar" style="background: linear-gradient(135deg, #4285f4, #34a853);">AI</div>
+                        <div>
+                            <div style="font-weight: 600;">STRIVE X AI Assistant</div>
+                            <div style="font-size: 0.8rem; color: var(--text-gray);">1 hour ago</div>
+                        </div>
+                    </div>
+                    <span class="ai-badge">AI Response</span>
+                </div>
+                <h3 style="margin-bottom: 0.5rem;">Re: Integration by parts</h3>
+                <p style="color: var(--text-gray);">The ILATE rule helps you choose which function to differentiate first: Inverse trig, Logarithmic, Algebraic, Trigonometric, Exponential. The formula is: ∫u dv = uv - ∫v du. Would you like me to show you a step-by-step example?</p>
+                <div class="post-actions">
+                    <button class="action-btn">👍 25 Helpful</button>
+                    <button class="action-btn">💬 Reply</button>
+                    <button class="action-btn">✅ Mark as Answer</button>
+                </div>
+            </div>
+
+            <div class="forum-post">
+                <div class="post-header">
+                    <div class="post-author">
+                        <div class="avatar">PS</div>
+                        <div>
+                            <div style="font-weight: 600;">Priya Sharma</div>
+                            <div style="font-size: 0.8rem; color: var(--text-gray);">30 minutes ago</div>
+                        </div>
+                    </div>
+                    <span style="color: var(--primary-orange);">Level 8</span>
+                </div>
+                <h3 style="margin-bottom: 0.5rem;">Tips for thermodynamics problems?</h3>
+                <p style="color: var(--text-gray);">What's the best approach to solve complex thermodynamics problems involving multiple processes?</p>
+                <div class="post-actions">
+                    <button class="action-btn">👍 8 Helpful</button>
+                    <button class="action-btn">💬 3 Replies</button>
+                    <button class="action-btn">🔖 Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3 style="color: var(--primary-orange); margin-bottom: 1rem;">STRIVE X</h3>
+        <p style="color: var(--text-gray); margin-bottom: 1rem;">SURVIVAL OF THE FITTEST</p>
+        <p style="color: var(--text-gray); font-size: 0.9rem;">© 2025 STRIVE X Educational Platform. All rights reserved.</p>
+        <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 0.5rem;">Empowering students through competitive learning and gamification</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        setInterval(() => {
+            const liveIndicator = document.querySelector('.live-indicator');
+            if (liveIndicator) {
+                liveIndicator.style.animation = 'none';
+                setTimeout(() => {
+                    liveIndicator.style.animation = '';
+                }, 10);
+            }
+        }, 2000);
+
+        console.log('STRIVE X Platform Loaded - Survival of the Fittest!');
+    </script>
+</body>
+</html>
