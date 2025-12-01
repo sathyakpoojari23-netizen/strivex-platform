@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="STRIVE X - Survival of the Fittest. Educational platform for competitive learning.">
+    <meta name="theme-color" content="#ff8c42">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="STRIVE X">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/53a5542c-87de-4dae-83da-c5d1ce7dc746/2025-11-30T18-23-57-139Z-0f3f5855-chat-image-1764527037121-0.jpg">
     <title>STRIVE X - Survival of the Fittest</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,6 +44,58 @@
             color: var(--text-primary);
             line-height: 1.6;
             transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Install Banner */
+        .install-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 32px rgba(255, 140, 66, 0.4);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            gap: 1rem;
+            animation: slideUp 0.5s ease;
+        }
+
+        .install-banner.show {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                bottom: -100px;
+                opacity: 0;
+            }
+            to {
+                bottom: 20px;
+                opacity: 1;
+            }
+        }
+
+        .install-banner button {
+            background: white;
+            color: var(--primary-orange);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .install-banner .close-banner {
+            background: transparent;
+            color: white;
+            font-size: 1.5rem;
+            padding: 0;
+            width: 30px;
+            height: 30px;
         }
 
         header {
@@ -99,20 +158,33 @@
             gap: 1rem;
         }
 
-        .theme-toggle {
+        .theme-toggle, .install-btn {
             background: var(--card-bg);
             border: 2px solid var(--border-color);
             color: var(--text-primary);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: all 0.3s;
         }
 
-        .theme-toggle:hover {
-            transform: scale(1.1);
+        .theme-toggle {
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover, .install-btn:hover {
+            transform: scale(1.05);
             border-color: var(--primary-orange);
+        }
+
+        .install-btn {
+            display: none;
+            font-weight: 600;
+        }
+
+        .install-btn.show {
+            display: block;
         }
 
         .hero {
@@ -367,6 +439,7 @@
             z-index: 2000;
             align-items: center;
             justify-content: center;
+            overflow-y: auto;
         }
 
         .modal.active {
@@ -382,6 +455,7 @@
             max-height: 90vh;
             overflow-y: auto;
             border: 2px solid var(--primary-orange);
+            margin: 2rem;
         }
 
         .modal-header {
@@ -465,10 +539,25 @@
                 gap: 1rem;
                 text-align: center;
             }
+            .tagline {
+                font-size: 0.7rem;
+            }
+            .install-banner {
+                flex-direction: column;
+                padding: 1rem;
+                width: 90%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Install Banner -->
+    <div class="install-banner" id="installBanner">
+        <span>📱 Install STRIVE X app on your phone!</span>
+        <button onclick="installApp()">Install</button>
+        <button class="close-banner" onclick="closeBanner()">×</button>
+    </div>
+
     <header>
         <nav>
             <div class="logo-container">
@@ -479,9 +568,9 @@
                 <li><a href="#dashboard">Dashboard</a></li>
                 <li><a href="#classes">Classes</a></li>
                 <li><a href="#assignments">Assignments</a></li>
-                <li><a href="#forum">Forum</a></li>
             </ul>
             <div class="user-section">
+                <button class="install-btn" id="installBtn" onclick="installApp()">📱 Install App</button>
                 <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌙</button>
                 <div class="user-info hidden" id="userInfo"></div>
                 <button class="btn" id="authBtn" onclick="handleAuth()">Login</button>
@@ -619,7 +708,7 @@
         </div>
     </div>
 
-    <!-- Upload Class Modal -->
+    <!-- Modals (same as before) -->
     <div id="classModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -657,7 +746,6 @@
         </div>
     </div>
 
-    <!-- Upload Notes Modal -->
     <div id="notesModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -691,7 +779,6 @@
         </div>
     </div>
 
-    <!-- Create Assignment Modal -->
     <div id="assignmentModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -733,7 +820,6 @@
         </div>
     </div>
 
-    <!-- Create DPP Modal -->
     <div id="dppModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -771,7 +857,6 @@
         </div>
     </div>
 
-    <!-- Create Test Modal -->
     <div id="testModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -823,8 +908,8 @@
     <script>
         const ADMIN_EMAILS = ['sathyakpoojari23@gmail.com', 'strivex720@gmail.com'];
         let currentUser = null;
+        let deferredPrompt;
 
-        // LocalStorage keys
         const STORAGE_KEYS = {
             USER: 'strivex_user',
             THEME: 'strivex_theme',
@@ -832,8 +917,57 @@
             NOTES: 'strivex_notes',
             ASSIGNMENTS: 'strivex_assignments',
             DPPS: 'strivex_dpps',
-            TESTS: 'strivex_tests'
+            TESTS: 'strivex_tests',
+            INSTALL_BANNER_CLOSED: 'strivex_install_banner_closed'
         };
+
+        // PWA Installation
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            const installBtn = document.getElementById('installBtn');
+            const installBanner = document.getElementById('installBanner');
+            const bannerClosed = localStorage.getItem(STORAGE_KEYS.INSTALL_BANNER_CLOSED);
+            
+            installBtn.classList.add('show');
+            
+            if (!bannerClosed) {
+                setTimeout(() => {
+                    installBanner.classList.add('show');
+                }, 3000);
+            }
+        });
+
+        function installApp() {
+            if (!deferredPrompt) {
+                alert('App is already installed or installation is not available on this device.');
+                return;
+            }
+
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                    closeBanner();
+                }
+                deferredPrompt = null;
+            });
+        }
+
+        function closeBanner() {
+            document.getElementById('installBanner').classList.remove('show');
+            localStorage.setItem(STORAGE_KEYS.INSTALL_BANNER_CLOSED, 'true');
+        }
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/strivex-platform/sw.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed'));
+            });
+        }
 
         // Theme Management
         function toggleTheme() {
@@ -864,7 +998,6 @@
             }
         }
 
-        // Initialize
         window.onload = function() {
             loadTheme();
             
@@ -927,7 +1060,6 @@
             }
         }
 
-        // Modal Management
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
         }
@@ -936,7 +1068,6 @@
             document.getElementById(modalId).classList.remove('active');
         }
 
-        // Upload Class
         function uploadClass() {
             const title = document.getElementById('classTitle').value;
             const subject = document.getElementById('classSubject').value;
@@ -972,7 +1103,6 @@
             }, 1500);
         }
 
-        // Upload Notes
         function uploadNotes() {
             const title = document.getElementById('notesTitle').value;
             const subject = document.getElementById('notesSubject').value;
@@ -1006,7 +1136,6 @@
             }, 1500);
         }
 
-        // Create Assignment
         function createAssignment() {
             const title = document.getElementById('assignmentTitle').value;
             const subject = document.getElementById('assignmentSubject').value;
@@ -1044,7 +1173,6 @@
             }, 1500);
         }
 
-        // Create DPP
         function createDPP() {
             const title = document.getElementById('dppTitle').value;
             const subject = document.getElementById('dppSubject').value;
@@ -1080,7 +1208,6 @@
             }, 1500);
         }
 
-        // Create Test
         function createTest() {
             const title = document.getElementById('testTitle').value;
             const subject = document.getElementById('testSubject').value;
@@ -1118,13 +1245,11 @@
             }, 1500);
         }
 
-        // Clear Forms
         function clearForm(type) {
             const inputs = document.querySelectorAll(`#${type}Modal input, #${type}Modal textarea, #${type}Modal select`);
             inputs.forEach(input => input.value = '');
         }
 
-        // Load All Content
         function loadAllContent() {
             loadClasses();
             loadNotes();
@@ -1254,7 +1379,6 @@
             `).join('');
         }
 
-        // Delete Item
         function deleteItem(storageKey, itemId) {
             if (!confirm('Are you sure you want to delete this item?')) return;
             
@@ -1264,7 +1388,6 @@
             loadAllContent();
         }
 
-        // Utility Functions
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
@@ -1289,7 +1412,6 @@
                   `More detailed analytics coming soon!`);
         }
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1300,14 +1422,12 @@
             });
         });
 
-        // Enter key login
         ['emailInput', 'passwordInput'].forEach(id => {
             document.getElementById(id)?.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') login();
             });
         });
 
-        // Close modal on outside click
         document.querySelectorAll('.modal').forEach(modal => {
             modal.addEventListener('click', function(e) {
                 if (e.target === this) {
@@ -1316,7 +1436,7 @@
             });
         });
 
-        console.log('STRIVE X Platform - Fully Functional! 🚀');
+        console.log('STRIVE X PWA - Ready to Install! 📱');
     </script>
 </body>
 </html>
