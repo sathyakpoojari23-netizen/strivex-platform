@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Site</title>
+</head>
+<body>
+{
+  "name": "STRIVE X - Educational Platform",
+  "short_name": "STRIVE X",
+  "description": "Survival of the Fittest - Compete, Learn, Excel",
+  "start_url": "/strivex-platform/",
+  "display": "standalone",
+  "background_color": "#0f1419",
+  "theme_color": "#ff8c42",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://nyc3.digitaloceanspaces.com/bhindi-drive/files/53a5542c-87de-4dae-83da-c5d1ce7dc746/2025-11-30T18-23-57-139Z-0f3f5855-chat-image-1764527037121-0.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://nyc3.digitaloceanspaces.com/bhindi-drive/files/53a5542c-87de-4dae-83da-c5d1ce7dc746/2025-11-30T18-23-57-139Z-0f3f5855-chat-image-1764527037121-0.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "learning"],
+  "screenshots": [
+    {
+      "src": "https://nyc3.digitaloceanspaces.com/bhindi-drive/files/53a5542c-87de-4dae-83da-c5d1ce7dc746/2025-11-30T18-23-57-139Z-0f3f5855-chat-image-1764527037121-0.jpg",
+      "sizes": "540x720",
+      "type": "image/jpeg"
+    }
+  ]
+}
+</body>
+</html>
