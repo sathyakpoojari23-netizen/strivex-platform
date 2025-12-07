@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="STRIVE X - Survival of the Fittest. Educational platform for competitive learning.">
-    <meta name="theme-color" content="#ff8c42">
+    <meta name="description" content="STRIVE X - Survival of the Fittest. NEET 2026 coaching with merit-based pricing.">
+    <meta name="theme-color" content="#4169E1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="STRIVE X">
@@ -15,98 +15,42 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --primary-blue: #1e3a5f;
-            --primary-orange: #ff8c42;
-            --bg-primary: #0f1419;
-            --bg-secondary: #1a1f2e;
-            --card-bg: #1a1f2e;
-            --text-primary: #e8eaed;
-            --text-secondary: #9aa0a6;
-            --border-color: rgba(255, 140, 66, 0.2);
-            --shadow: rgba(0, 0, 0, 0.3);
-            --success: #34a853;
-            --danger: #ea4335;
+            --royal-blue: #4169E1;
+            --dark-blue: #0A1929;
+            --orange: #FF8C42;
+            --white: #FFFFFF;
+            --light-gray: #F5F7FA;
+            --text-dark: #1A1A1A;
+            --text-gray: #666666;
+            --success: #34A853;
+            --danger: #EA4335;
+            --shadow: rgba(65, 105, 225, 0.1);
         }
 
-        [data-theme="light"] {
-            --bg-primary: #f5f5f5;
-            --bg-secondary: #ffffff;
-            --card-bg: #ffffff;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666666;
-            --border-color: rgba(255, 140, 66, 0.3);
-            --shadow: rgba(0, 0, 0, 0.1);
+        [data-theme="dark"] {
+            --white: #0A1929;
+            --light-gray: #1A2332;
+            --text-dark: #FFFFFF;
+            --text-gray: #B0B8C1;
+            --shadow: rgba(0, 0, 0, 0.3);
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            background: var(--white);
+            color: var(--text-dark);
             line-height: 1.6;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        /* Install Banner */
-        .install-banner {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            box-shadow: 0 8px 32px rgba(255, 140, 66, 0.4);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            gap: 1rem;
-            animation: slideUp 0.5s ease;
-        }
-
-        .install-banner.show {
-            display: flex;
-        }
-
-        @keyframes slideUp {
-            from {
-                bottom: -100px;
-                opacity: 0;
-            }
-            to {
-                bottom: 20px;
-                opacity: 1;
-            }
-        }
-
-        .install-banner button {
-            background: white;
-            color: var(--primary-orange);
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .install-banner .close-banner {
-            background: transparent;
-            color: white;
-            font-size: 1.5rem;
-            padding: 0;
-            width: 30px;
-            height: 30px;
+            transition: all 0.3s ease;
         }
 
         header {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            background: var(--white);
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px var(--shadow);
-            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px var(--shadow);
+            border-bottom: 2px solid var(--royal-blue);
         }
 
         nav {
@@ -128,85 +72,59 @@
             width: auto;
         }
 
-        .tagline {
-            font-size: 0.9rem;
-            color: var(--primary-orange);
+        .brand-text h1 {
+            font-size: 1.5rem;
+            color: var(--royal-blue);
+            font-weight: 700;
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: var(--orange);
             font-weight: 600;
             letter-spacing: 1px;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-orange);
-        }
-
-        .user-section {
+        .nav-actions {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
-        .theme-toggle, .install-btn {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            color: var(--text-primary);
+        .theme-toggle {
+            background: var(--light-gray);
+            border: 2px solid var(--royal-blue);
+            color: var(--text-dark);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.2rem;
             transition: all 0.3s;
         }
 
-        .theme-toggle {
-            font-size: 1.2rem;
-        }
-
-        .theme-toggle:hover, .install-btn:hover {
+        .theme-toggle:hover {
             transform: scale(1.05);
-            border-color: var(--primary-orange);
-        }
-
-        .install-btn {
-            display: none;
-            font-weight: 600;
-        }
-
-        .install-btn.show {
-            display: block;
+            background: var(--royal-blue);
+            color: white;
         }
 
         .hero {
+            background: linear-gradient(135deg, var(--royal-blue), #5B7FE8);
+            color: white;
             text-align: center;
             padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
-            border-bottom: 2px solid var(--primary-orange);
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 800;
         }
 
         .hero p {
             font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
         }
 
         .container {
@@ -215,217 +133,287 @@
             padding: 2rem;
         }
 
-        .login-section {
-            max-width: 500px;
-            margin: 3rem auto;
-            background: var(--card-bg);
+        .batch-card {
+            background: var(--white);
+            border-radius: 20px;
             padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px var(--shadow);
-            border: 1px solid var(--border-color);
+            margin: 3rem auto;
+            max-width: 900px;
+            box-shadow: 0 10px 40px var(--shadow);
+            border: 3px solid var(--royal-blue);
         }
 
-        .login-section h2 {
-            color: var(--primary-orange);
+        .batch-header {
+            text-align: center;
             margin-bottom: 2rem;
+        }
+
+        .batch-header h2 {
+            font-size: 2.5rem;
+            color: var(--royal-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .batch-header .tagline {
+            font-size: 1.2rem;
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .batch-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .detail-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-radius: 15px;
+        }
+
+        .detail-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item h3 {
+            color: var(--royal-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, var(--royal-blue), #5B7FE8);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
             text-align: center;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .pricing-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 1rem 0;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 1rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-orange);
-        }
-
-        .dashboard {
+        .enrollment-options {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin: 3rem 0;
         }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 8px 32px var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--border-color);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(255, 140, 66, 0.2);
-        }
-
-        .card h2 {
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .admin-panel {
-            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            border: 2px solid var(--primary-orange);
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .admin-header h2 {
-            color: var(--text-primary);
-        }
-
-        .admin-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .admin-btn {
-            background: var(--card-bg);
-            border: 2px solid var(--primary-orange);
-            color: var(--text-primary);
-            padding: 1.5rem;
-            border-radius: 10px;
-            cursor: pointer;
+        .option-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 8px 30px var(--shadow);
+            border: 3px solid var(--light-gray);
             transition: all 0.3s;
-            font-size: 1rem;
-            font-weight: 600;
         }
 
-        .admin-btn:hover {
-            background: var(--primary-orange);
+        .option-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--royal-blue);
+            box-shadow: 0 15px 50px rgba(65, 105, 225, 0.2);
+        }
+
+        .option-card.featured {
+            border-color: var(--orange);
+            position: relative;
+        }
+
+        .option-card.featured::before {
+            content: "RECOMMENDED";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--orange);
             color: white;
-            transform: scale(1.05);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .option-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-card h3 {
+            font-size: 1.8rem;
+            color: var(--royal-blue);
+            margin-bottom: 1rem;
+        }
+
+        .option-card .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--royal-blue);
+            margin: 1rem 0;
+        }
+
+        .option-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .option-card ul li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+        }
+
+        .option-card ul li::before {
+            content: "✓ ";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 0.5rem;
         }
 
         .btn {
-            background: linear-gradient(135deg, var(--primary-orange), #ff6b35);
+            background: linear-gradient(135deg, var(--royal-blue), #5B7FE8);
             color: white;
             border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+            box-shadow: 0 5px 20px rgba(65, 105, 225, 0.3);
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 140, 66, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(65, 105, 225, 0.5);
         }
 
-        .btn-secondary {
-            background: var(--card-bg);
-            border: 2px solid var(--primary-orange);
-            color: var(--text-primary);
+        .btn-orange {
+            background: linear-gradient(135deg, var(--orange), #FF6B35);
+            box-shadow: 0 5px 20px rgba(255, 140, 66, 0.3);
         }
 
-        .content-section {
-            margin-bottom: 3rem;
+        .btn-orange:hover {
+            box-shadow: 0 8px 30px rgba(255, 140, 66, 0.5);
         }
 
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .scholarship-table {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .scholarship-table h3 {
+            text-align: center;
+            color: var(--royal-blue);
+            font-size: 2rem;
             margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--primary-orange);
         }
 
-        .section-header h2 {
-            color: var(--text-primary);
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .content-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            border: 1px solid var(--border-color);
-        }
-
-        .content-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
-        }
-
-        .content-thumbnail {
+        table {
             width: 100%;
-            height: 160px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-orange));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+            border-collapse: collapse;
         }
 
-        .content-info {
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        th {
+            background: var(--royal-blue);
+            color: white;
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background: var(--light-gray);
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.1), rgba(91, 127, 232, 0.1));
+            font-weight: 700;
+            color: var(--royal-blue);
+        }
+
+        .test-info {
+            background: var(--light-gray);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .test-info h4 {
+            color: var(--royal-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .test-info ul {
+            list-style: none;
+        }
+
+        .test-info ul li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+        }
+
+        .test-info ul li::before {
+            content: "📝 ";
+            margin-right: 0.5rem;
+        }
+
+        .warning-box {
+            background: #FFF3CD;
+            border-left: 5px solid #FFC107;
             padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
         }
 
-        .content-title {
-            font-size: 1.1rem;
+        .warning-box h4 {
+            color: #856404;
             margin-bottom: 0.5rem;
-            color: var(--text-primary);
         }
 
-        .content-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 1rem;
+        .warning-box p {
+            color: #856404;
+        }
+
+        footer {
+            background: var(--dark-blue);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            color: var(--orange);
+            margin-bottom: 1rem;
         }
 
         .modal {
@@ -447,133 +435,82 @@
         }
 
         .modal-content {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
             max-width: 600px;
             width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 2px solid var(--primary-orange);
             margin: 2rem;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
         }
 
         .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             margin-bottom: 2rem;
         }
 
         .modal-header h2 {
-            color: var(--primary-orange);
+            color: var(--royal-blue);
+            font-size: 2rem;
         }
 
         .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
             background: none;
             border: none;
             font-size: 2rem;
-            color: var(--text-primary);
+            color: var(--text-gray);
             cursor: pointer;
         }
 
-        .hidden {
-            display: none !important;
+        .form-group {
+            margin-bottom: 1.5rem;
         }
 
-        .user-info {
-            background: rgba(255, 140, 66, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid var(--border-color);
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
         }
 
-        .error-msg, .success-msg {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            padding: 0.5rem;
-            border-radius: 5px;
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
         }
 
-        .error-msg {
-            color: var(--danger);
-            background: rgba(234, 67, 53, 0.1);
-        }
-
-        .success-msg {
-            color: var(--success);
-            background: rgba(52, 168, 83, 0.1);
-        }
-
-        .delete-btn {
-            background: var(--danger);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
-        .delete-btn:hover {
-            background: #c5221f;
-        }
-
-        footer {
-            background: var(--card-bg);
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-            border-top: 2px solid var(--primary-orange);
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--royal-blue);
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; }
-            .dashboard { grid-template-columns: 1fr; }
-            .admin-header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-            .tagline {
-                font-size: 0.7rem;
-            }
-            .install-banner {
-                flex-direction: column;
-                padding: 1rem;
-                width: 90%;
-            }
+            .batch-header h2 { font-size: 1.8rem; }
+            .enrollment-options { grid-template-columns: 1fr; }
+            .brand-text h1 { font-size: 1.2rem; }
+            .brand-text p { font-size: 0.65rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Install Banner -->
-    <div class="install-banner" id="installBanner">
-        <span>📱 Install STRIVE X app on your phone!</span>
-        <button onclick="installApp()">Install</button>
-        <button class="close-banner" onclick="closeBanner()">×</button>
-    </div>
-
     <header>
         <nav>
             <div class="logo-container">
                 <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/53a5542c-87de-4dae-83da-c5d1ce7dc746/2025-11-30T18-23-57-139Z-0f3f5855-chat-image-1764527037121-0.jpg" alt="STRIVE X Logo" class="logo">
-                <span class="tagline">SURVIVAL OF THE FITTEST</span>
+                <div class="brand-text">
+                    <h1>STRIVE X</h1>
+                    <p>SURVIVAL OF THE FITTEST</p>
+                </div>
             </div>
-            <ul class="nav-links" id="mainNav">
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#classes">Classes</a></li>
-                <li><a href="#assignments">Assignments</a></li>
-            </ul>
-            <div class="user-section">
-                <button class="install-btn" id="installBtn" onclick="installApp()">📱 Install App</button>
+            <div class="nav-actions">
                 <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌙</button>
-                <div class="user-info hidden" id="userInfo"></div>
-                <button class="btn" id="authBtn" onclick="handleAuth()">Login</button>
             </div>
         </nav>
     </header>
@@ -581,417 +518,283 @@
     <section class="hero">
         <h1>STRIVE X</h1>
         <p>SURVIVAL OF THE FITTEST</p>
-        <p style="font-size: 1.1rem; color: var(--text-secondary);">Compete, Learn, Excel - Where Only the Best Thrive</p>
+        <p style="font-size: 1.2rem; opacity: 0.9;">India's First Merit-Based NEET Coaching</p>
     </section>
 
     <div class="container">
-        <div class="login-section" id="loginSection">
-            <h2>🔐 Login to STRIVE X</h2>
-            <div class="form-group">
-                <label for="emailInput">Email Address</label>
-                <input type="email" id="emailInput" placeholder="Enter your email" required>
+        <div class="batch-card">
+            <div class="batch-header">
+                <h2>🎯 SURVIVAL X</h2>
+                <p class="tagline">NEET 2026 Complete Batch</p>
+                <p style="color: var(--text-gray); margin-top: 1rem;">Only the Fittest Survive!</p>
             </div>
-            <div class="form-group">
-                <label for="passwordInput">Password</label>
-                <input type="password" id="passwordInput" placeholder="Enter your password" required>
+
+            <div class="batch-details">
+                <div class="detail-item">
+                    <div class="icon">🧬</div>
+                    <h3>Biology</h3>
+                    <p>100+ Videos<br>Botany + Zoology</p>
+                </div>
+                <div class="detail-item">
+                    <div class="icon">⚛️</div>
+                    <h3>Physics</h3>
+                    <p>60+ Videos<br>NEET Focused</p>
+                </div>
+                <div class="detail-item">
+                    <div class="icon">🧪</div>
+                    <h3>Chemistry</h3>
+                    <p>60+ Videos<br>Complete Coverage</p>
+                </div>
+                <div class="detail-item">
+                    <div class="icon">📅</div>
+                    <h3>Duration</h3>
+                    <p>12 Months<br>Full Access</p>
+                </div>
             </div>
-            <button class="btn" style="width: 100%;" onclick="login()">Login</button>
-            <div class="error-msg hidden" id="errorMsg"></div>
+
+            <div class="pricing-section">
+                <h3>Batch Fee</h3>
+                <div class="price">₹10,000</div>
+                <p style="font-size: 1.1rem; opacity: 0.9;">But wait... You can get up to 95% OFF!</p>
+            </div>
+
+            <h2 style="text-align: center; color: var(--royal-blue); margin: 3rem 0 2rem 0; font-size: 2.5rem;">
+                Choose Your Path
+            </h2>
+
+            <div class="enrollment-options">
+                <div class="option-card">
+                    <div class="option-icon">💰</div>
+                    <h3>Direct Entry</h3>
+                    <div class="price-tag">₹10,000</div>
+                    <ul>
+                        <li>Instant Access</li>
+                        <li>No Test Required</li>
+                        <li>Full Batch Access</li>
+                        <li>All Features Unlocked</li>
+                    </ul>
+                    <button class="btn" onclick="openEnrollModal('direct')">Enroll Now</button>
+                </div>
+
+                <div class="option-card featured">
+                    <div class="option-icon">🎯</div>
+                    <h3>SURVIVAL Test</h3>
+                    <div class="price-tag">₹500 - ₹10,000</div>
+                    <p style="color: var(--orange); font-weight: 700; margin: 1rem 0;">Based on Your Score!</p>
+                    <ul>
+                        <li>100 Difficult Questions</li>
+                        <li>Score 90+: Pay only ₹500!</li>
+                        <li>Score 80+: Pay only ₹2,000!</li>
+                        <li>Prove Your Merit!</li>
+                    </ul>
+                    <button class="btn btn-orange" onclick="openTestInfo()">Take SURVIVAL Test</button>
+                </div>
+            </div>
+
+            <div class="scholarship-table">
+                <h3>💎 Scholarship Structure</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Score Range</th>
+                            <th>Scholarship</th>
+                            <th>You Pay</th>
+                            <th>You Save</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight">
+                            <td>90-100</td>
+                            <td>95%</td>
+                            <td>₹500</td>
+                            <td>₹9,500 🏆</td>
+                        </tr>
+                        <tr>
+                            <td>80-89</td>
+                            <td>80%</td>
+                            <td>₹2,000</td>
+                            <td>₹8,000 🥇</td>
+                        </tr>
+                        <tr>
+                            <td>70-79</td>
+                            <td>65%</td>
+                            <td>₹3,500</td>
+                            <td>₹6,500 🥈</td>
+                        </tr>
+                        <tr>
+                            <td>60-69</td>
+                            <td>50%</td>
+                            <td>₹5,000</td>
+                            <td>₹5,000 🥉</td>
+                        </tr>
+                        <tr>
+                            <td>50-59</td>
+                            <td>35%</td>
+                            <td>₹6,500</td>
+                            <td>₹3,500</td>
+                        </tr>
+                        <tr>
+                            <td>40-49</td>
+                            <td>20%</td>
+                            <td>₹8,000</td>
+                            <td>₹2,000</td>
+                        </tr>
+                        <tr>
+                            <td>30-39</td>
+                            <td>10%</td>
+                            <td>₹9,000</td>
+                            <td>₹1,000</td>
+                        </tr>
+                        <tr>
+                            <td>Below 30</td>
+                            <td>0%</td>
+                            <td>₹10,000</td>
+                            <td>₹0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="test-info">
+                <h4>📝 SURVIVAL Test Details</h4>
+                <ul>
+                    <li>Total Questions: 100 (Difficult Level)</li>
+                    <li>Biology: 50 Questions (25 Botany + 25 Zoology)</li>
+                    <li>Physics: 25 Questions</li>
+                    <li>Chemistry: 25 Questions</li>
+                    <li>Duration: 180 Minutes (3 Hours)</li>
+                    <li>Pattern: NEET-Level Difficulty</li>
+                    <li>Attempt: ONE TIME ONLY</li>
+                    <li>Results: Within 24 Hours</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Important Note</h4>
+                <p><strong>The SURVIVAL Test is genuinely difficult!</strong> It's designed to test your real understanding, not just memory. Prepare well before attempting. You get only ONE chance!</p>
+            </div>
         </div>
+    </div>
 
-        <div id="mainContent" class="hidden">
-            <div id="adminPanel" class="admin-panel hidden">
-                <div class="admin-header">
-                    <h2>🔐 Admin Control Panel</h2>
-                    <span style="color: var(--primary-orange); font-weight: 600;">Full Access Mode</span>
-                </div>
-                <div class="admin-actions">
-                    <button class="admin-btn" onclick="openModal('classModal')">📹 Upload Recorded Class</button>
-                    <button class="admin-btn" onclick="openModal('notesModal')">📝 Upload Notes/Study Material</button>
-                    <button class="admin-btn" onclick="openModal('assignmentModal')">📋 Create Assignment</button>
-                    <button class="admin-btn" onclick="openModal('dppModal')">📊 Create DPP</button>
-                    <button class="admin-btn" onclick="openModal('testModal')">🎯 Create Test</button>
-                    <button class="admin-btn" onclick="alert('Live class scheduling coming soon!')">🎥 Schedule Live Class</button>
-                    <button class="admin-btn" onclick="viewStudents()">👥 Manage Students</button>
-                    <button class="admin-btn" onclick="viewAnalytics()">📈 View Analytics</button>
+    <!-- Test Info Modal -->
+    <div id="testInfoModal" class="modal">
+        <div class="modal-content" style="position: relative;">
+            <button class="close-modal" onclick="closeModal('testInfoModal')">×</button>
+            <div class="modal-header">
+                <h2>🎯 SURVIVAL Test</h2>
+                <p style="color: var(--orange); font-weight: 600;">Prove Your Merit, Save Money!</p>
+            </div>
+            
+            <div style="text-align: left; margin: 2rem 0;">
+                <h3 style="color: var(--royal-blue); margin-bottom: 1rem;">Before You Start:</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0;">✓ Ensure stable internet connection</li>
+                    <li style="padding: 0.5rem 0;">✓ Keep 3 hours free (no interruptions)</li>
+                    <li style="padding: 0.5rem 0;">✓ Have pen and paper ready</li>
+                    <li style="padding: 0.5rem 0;">✓ You can take this test ONLY ONCE</li>
+                    <li style="padding: 0.5rem 0;">✓ Questions are NEET-level difficult</li>
+                </ul>
+
+                <div style="background: var(--light-gray); padding: 1.5rem; border-radius: 10px; margin: 2rem 0;">
+                    <h4 style="color: var(--royal-blue); margin-bottom: 0.5rem;">What Happens Next?</h4>
+                    <p style="color: var(--text-gray); font-size: 0.95rem;">
+                        1. You'll be redirected to Google Forms<br>
+                        2. Complete all 100 questions<br>
+                        3. Submit your test<br>
+                        4. We'll email your results within 24 hours<br>
+                        5. Pay discounted amount and start learning!
+                    </p>
                 </div>
             </div>
 
-            <div id="dashboard" class="dashboard">
-                <div class="card">
-                    <div class="card-icon">📚</div>
-                    <h2>Recorded Classes</h2>
-                    <p>Access all recorded video lectures organized by subject and topic</p>
-                    <button class="btn" style="margin-top: 1rem;" onclick="scrollToSection('classes')">Browse Classes</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">📝</div>
-                    <h2>Notes & Materials</h2>
-                    <p>Download comprehensive study notes and reference materials</p>
-                    <button class="btn" style="margin-top: 1rem;" onclick="scrollToSection('notes')">View Notes</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">✍️</div>
-                    <h2>Assignments</h2>
-                    <p>Complete assignments to earn XP and improve your ranking</p>
-                    <button class="btn" style="margin-top: 1rem;" onclick="scrollToSection('assignments')">View Assignments</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h2>DPPs</h2>
-                    <p>Daily Practice Problems to sharpen your skills</p>
-                    <button class="btn" style="margin-top: 1rem;" onclick="scrollToSection('dpps')">Start DPP</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🎯</div>
-                    <h2>Tests</h2>
-                    <p>Take tests to evaluate your preparation and earn rewards</p>
-                    <button class="btn" style="margin-top: 1rem;" onclick="scrollToSection('tests')">Take Test</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🏆</div>
-                    <h2>Leaderboard</h2>
-                    <p>See where you stand among your peers</p>
-                    <button class="btn" style="margin-top: 1rem;" onclick="alert('Leaderboard coming soon!')">View Rankings</button>
-                </div>
-            </div>
-
-            <div id="classes" class="content-section">
-                <div class="section-header">
-                    <h2>📹 Recorded Classes</h2>
-                </div>
-                <div class="content-grid" id="classesGrid">
-                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No classes available yet. Admin can upload classes from the control panel.</p>
-                </div>
-            </div>
-
-            <div id="notes" class="content-section">
-                <div class="section-header">
-                    <h2>📝 Notes & Study Materials</h2>
-                </div>
-                <div class="content-grid" id="notesGrid">
-                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No notes available yet. Admin can upload notes from the control panel.</p>
-                </div>
-            </div>
-
-            <div id="assignments" class="content-section">
-                <div class="section-header">
-                    <h2>📋 Assignments</h2>
-                </div>
-                <div class="content-grid" id="assignmentsGrid">
-                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No assignments available yet. Admin can create assignments from the control panel.</p>
-                </div>
-            </div>
-
-            <div id="dpps" class="content-section">
-                <div class="section-header">
-                    <h2>📊 Daily Practice Problems (DPPs)</h2>
-                </div>
-                <div class="content-grid" id="dppsGrid">
-                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No DPPs available yet. Admin can create DPPs from the control panel.</p>
-                </div>
-            </div>
-
-            <div id="tests" class="content-section">
-                <div class="section-header">
-                    <h2>🎯 Tests</h2>
-                </div>
-                <div class="content-grid" id="testsGrid">
-                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No tests available yet. Admin can create tests from the control panel.</p>
-                </div>
+            <div style="text-align: center;">
+                <p style="margin-bottom: 1rem; color: var(--text-gray);">
+                    <strong>Ready to prove yourself?</strong>
+                </p>
+                <button class="btn btn-orange" onclick="startTest()" style="margin: 0.5rem;">
+                    I'm Ready - Start Test Now!
+                </button>
+                <br>
+                <button class="btn" onclick="closeModal('testInfoModal')" style="margin: 0.5rem; background: var(--light-gray); color: var(--text-dark); box-shadow: none;">
+                    Not Yet - Let Me Prepare
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Modals (same as before) -->
-    <div id="classModal" class="modal">
-        <div class="modal-content">
+    <!-- Enrollment Modal -->
+    <div id="enrollModal" class="modal">
+        <div class="modal-content" style="position: relative;">
+            <button class="close-modal" onclick="closeModal('enrollModal')">×</button>
             <div class="modal-header">
-                <h2>📹 Upload Recorded Class</h2>
-                <button class="close-modal" onclick="closeModal('classModal')">×</button>
+                <h2>📝 Enrollment Form</h2>
+                <p id="enrollType" style="color: var(--orange); font-weight: 600;"></p>
             </div>
-            <div class="form-group">
-                <label>Class Title</label>
-                <input type="text" id="classTitle" placeholder="e.g., Physics - Thermodynamics">
-            </div>
-            <div class="form-group">
-                <label>Subject</label>
-                <select id="classSubject">
-                    <option value="Physics">Physics</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="Biology">Biology</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Video URL (YouTube/Drive Link)</label>
-                <input type="url" id="classVideo" placeholder="https://youtube.com/watch?v=...">
-            </div>
-            <div class="form-group">
-                <label>Duration (minutes)</label>
-                <input type="number" id="classDuration" placeholder="120">
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea id="classDescription" placeholder="Brief description of the class..."></textarea>
-            </div>
-            <button class="btn" style="width: 100%;" onclick="uploadClass()">Upload Class</button>
-            <div class="success-msg hidden" id="classSuccess">Class uploaded successfully!</div>
-        </div>
-    </div>
+            
+            <form id="enrollmentForm">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="studentName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="studentEmail" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="studentPhone" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
+                </div>
+                <div class="form-group">
+                    <label>State *</label>
+                    <input type="text" id="studentState" required placeholder="Your state">
+                </div>
 
-    <div id="notesModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>📝 Upload Notes/Study Material</h2>
-                <button class="close-modal" onclick="closeModal('notesModal')">×</button>
-            </div>
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" id="notesTitle" placeholder="e.g., Organic Chemistry Notes">
-            </div>
-            <div class="form-group">
-                <label>Subject</label>
-                <select id="notesSubject">
-                    <option value="Physics">Physics</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="Biology">Biology</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>File URL (Google Drive/Dropbox Link)</label>
-                <input type="url" id="notesFile" placeholder="https://drive.google.com/file/d/...">
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea id="notesDescription" placeholder="Brief description..."></textarea>
-            </div>
-            <button class="btn" style="width: 100%;" onclick="uploadNotes()">Upload Notes</button>
-            <div class="success-msg hidden" id="notesSuccess">Notes uploaded successfully!</div>
-        </div>
-    </div>
+                <div style="background: var(--light-gray); padding: 1.5rem; border-radius: 10px; margin: 2rem 0;">
+                    <h4 style="color: var(--royal-blue); margin-bottom: 1rem;">Payment Details</h4>
+                    <p style="color: var(--text-gray); margin-bottom: 1rem;">
+                        Amount to Pay: <strong id="paymentAmount" style="color: var(--royal-blue); font-size: 1.5rem;">₹10,000</strong>
+                    </p>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">
+                        After submitting this form, you'll receive payment instructions via email within 1 hour.
+                    </p>
+                </div>
 
-    <div id="assignmentModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>📋 Create Assignment</h2>
-                <button class="close-modal" onclick="closeModal('assignmentModal')">×</button>
-            </div>
-            <div class="form-group">
-                <label>Assignment Title</label>
-                <input type="text" id="assignmentTitle" placeholder="e.g., Physics Assignment #1">
-            </div>
-            <div class="form-group">
-                <label>Subject</label>
-                <select id="assignmentSubject">
-                    <option value="Physics">Physics</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="Biology">Biology</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Due Date</label>
-                <input type="date" id="assignmentDue">
-            </div>
-            <div class="form-group">
-                <label>Total Questions</label>
-                <input type="number" id="assignmentQuestions" placeholder="10">
-            </div>
-            <div class="form-group">
-                <label>XP Reward</label>
-                <input type="number" id="assignmentXP" placeholder="100">
-            </div>
-            <div class="form-group">
-                <label>Instructions/Questions</label>
-                <textarea id="assignmentInstructions" placeholder="Enter assignment questions or link to question paper..."></textarea>
-            </div>
-            <button class="btn" style="width: 100%;" onclick="createAssignment()">Create Assignment</button>
-            <div class="success-msg hidden" id="assignmentSuccess">Assignment created successfully!</div>
-        </div>
-    </div>
-
-    <div id="dppModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>📊 Create DPP</h2>
-                <button class="close-modal" onclick="closeModal('dppModal')">×</button>
-            </div>
-            <div class="form-group">
-                <label>DPP Title</label>
-                <input type="text" id="dppTitle" placeholder="e.g., DPP #1 - Mechanics">
-            </div>
-            <div class="form-group">
-                <label>Subject</label>
-                <select id="dppSubject">
-                    <option value="Physics">Physics</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="Biology">Biology</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Total Questions</label>
-                <input type="number" id="dppQuestions" placeholder="20">
-            </div>
-            <div class="form-group">
-                <label>XP Reward</label>
-                <input type="number" id="dppXP" placeholder="50">
-            </div>
-            <div class="form-group">
-                <label>Questions/Link</label>
-                <textarea id="dppContent" placeholder="Enter questions or link to DPP..."></textarea>
-            </div>
-            <button class="btn" style="width: 100%;" onclick="createDPP()">Create DPP</button>
-            <div class="success-msg hidden" id="dppSuccess">DPP created successfully!</div>
-        </div>
-    </div>
-
-    <div id="testModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>🎯 Create Test</h2>
-                <button class="close-modal" onclick="closeModal('testModal')">×</button>
-            </div>
-            <div class="form-group">
-                <label>Test Title</label>
-                <input type="text" id="testTitle" placeholder="e.g., Mid-Term Physics Test">
-            </div>
-            <div class="form-group">
-                <label>Subject</label>
-                <select id="testSubject">
-                    <option value="Physics">Physics</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="Biology">Biology</option>
-                    <option value="Mixed">Mixed</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Test Date</label>
-                <input type="datetime-local" id="testDate">
-            </div>
-            <div class="form-group">
-                <label>Duration (minutes)</label>
-                <input type="number" id="testDuration" placeholder="180">
-            </div>
-            <div class="form-group">
-                <label>Total Marks</label>
-                <input type="number" id="testMarks" placeholder="100">
-            </div>
-            <div class="form-group">
-                <label>Instructions/Link</label>
-                <textarea id="testInstructions" placeholder="Enter test instructions or link..."></textarea>
-            </div>
-            <button class="btn" style="width: 100%;" onclick="createTest()">Create Test</button>
-            <div class="success-msg hidden" id="testSuccess">Test created successfully!</div>
+                <button type="submit" class="btn" style="width: 100%;">Submit Enrollment Request</button>
+            </form>
         </div>
     </div>
 
     <footer>
-        <h3 style="color: var(--primary-orange); margin-bottom: 1rem;">STRIVE X</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1rem;">SURVIVAL OF THE FITTEST</p>
-        <p style="color: var(--text-secondary); font-size: 0.9rem;">© 2025 STRIVE X Educational Platform. All rights reserved.</p>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Empowering students through competitive learning and gamification</p>
+        <h3 style="color: var(--orange); margin-bottom: 1rem;">STRIVE X</h3>
+        <p style="margin-bottom: 1rem;">SURVIVAL OF THE FITTEST</p>
+        <p style="font-size: 0.9rem; opacity: 0.8;">© 2025 STRIVE X Educational Platform. All rights reserved.</p>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Empowering NEET aspirants through merit-based learning</p>
     </footer>
 
     <script>
-        const ADMIN_EMAILS = ['sathyakpoojari23@gmail.com', 'strivex720@gmail.com'];
-        let currentUser = null;
-        let deferredPrompt;
-
-        const STORAGE_KEYS = {
-            USER: 'strivex_user',
-            THEME: 'strivex_theme',
-            CLASSES: 'strivex_classes',
-            NOTES: 'strivex_notes',
-            ASSIGNMENTS: 'strivex_assignments',
-            DPPS: 'strivex_dpps',
-            TESTS: 'strivex_tests',
-            INSTALL_BANNER_CLOSED: 'strivex_install_banner_closed'
-        };
-
-        // PWA Installation
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            
-            const installBtn = document.getElementById('installBtn');
-            const installBanner = document.getElementById('installBanner');
-            const bannerClosed = localStorage.getItem(STORAGE_KEYS.INSTALL_BANNER_CLOSED);
-            
-            installBtn.classList.add('show');
-            
-            if (!bannerClosed) {
-                setTimeout(() => {
-                    installBanner.classList.add('show');
-                }, 3000);
-            }
-        });
-
-        function installApp() {
-            if (!deferredPrompt) {
-                alert('App is already installed or installation is not available on this device.');
-                return;
-            }
-
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                    closeBanner();
-                }
-                deferredPrompt = null;
-            });
-        }
-
-        function closeBanner() {
-            document.getElementById('installBanner').classList.remove('show');
-            localStorage.setItem(STORAGE_KEYS.INSTALL_BANNER_CLOSED, 'true');
-        }
-
-        // Register Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/strivex-platform/sw.js')
-                    .then(reg => console.log('Service Worker registered'))
-                    .catch(err => console.log('Service Worker registration failed'));
-            });
-        }
-
         // Theme Management
         function toggleTheme() {
             const html = document.documentElement;
             const themeToggle = document.getElementById('themeToggle');
             const currentTheme = html.getAttribute('data-theme');
             
-            if (currentTheme === 'light') {
+            if (currentTheme === 'dark') {
                 html.removeAttribute('data-theme');
                 themeToggle.textContent = '🌙';
-                localStorage.setItem(STORAGE_KEYS.THEME, 'dark');
+                localStorage.setItem('strivex_theme', 'light');
             } else {
-                html.setAttribute('data-theme', 'light');
+                html.setAttribute('data-theme', 'dark');
                 themeToggle.textContent = '☀️';
-                localStorage.setItem(STORAGE_KEYS.THEME, 'light');
+                localStorage.setItem('strivex_theme', 'dark');
             }
         }
 
         function loadTheme() {
-            const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
+            const savedTheme = localStorage.getItem('strivex_theme');
             const themeToggle = document.getElementById('themeToggle');
             
-            if (savedTheme === 'light') {
-                document.documentElement.setAttribute('data-theme', 'light');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
                 themeToggle.textContent = '☀️';
             } else {
                 themeToggle.textContent = '🌙';
@@ -1000,66 +803,9 @@
 
         window.onload = function() {
             loadTheme();
-            
-            const savedUser = localStorage.getItem(STORAGE_KEYS.USER);
-            if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                showMainContent();
-            }
         };
 
-        function login() {
-            const email = document.getElementById('emailInput').value.trim().toLowerCase();
-            const password = document.getElementById('passwordInput').value;
-            const errorMsg = document.getElementById('errorMsg');
-
-            if (!email || !password) {
-                errorMsg.textContent = 'Please enter both email and password';
-                errorMsg.classList.remove('hidden');
-                return;
-            }
-
-            if (email && password.length >= 6) {
-                currentUser = {
-                    email: email,
-                    isAdmin: ADMIN_EMAILS.includes(email),
-                    loginTime: new Date().toISOString()
-                };
-                
-                localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(currentUser));
-                showMainContent();
-            } else {
-                errorMsg.textContent = 'Invalid credentials. Password must be at least 6 characters.';
-                errorMsg.classList.remove('hidden');
-            }
-        }
-
-        function showMainContent() {
-            document.getElementById('loginSection').classList.add('hidden');
-            document.getElementById('mainContent').classList.remove('hidden');
-            
-            const userInfo = document.getElementById('userInfo');
-            userInfo.textContent = currentUser.email;
-            userInfo.classList.remove('hidden');
-            
-            const authBtn = document.getElementById('authBtn');
-            authBtn.textContent = 'Logout';
-            
-            if (currentUser.isAdmin) {
-                document.getElementById('adminPanel').classList.remove('hidden');
-            }
-
-            loadAllContent();
-        }
-
-        function handleAuth() {
-            if (currentUser) {
-                localStorage.removeItem(STORAGE_KEYS.USER);
-                currentUser = null;
-                location.reload();
-            }
-        }
-
+        // Modal Management
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
         }
@@ -1068,366 +814,61 @@
             document.getElementById(modalId).classList.remove('active');
         }
 
-        function uploadClass() {
-            const title = document.getElementById('classTitle').value;
-            const subject = document.getElementById('classSubject').value;
-            const video = document.getElementById('classVideo').value;
-            const duration = document.getElementById('classDuration').value;
-            const description = document.getElementById('classDescription').value;
+        function openTestInfo() {
+            openModal('testInfoModal');
+        }
 
-            if (!title || !video) {
-                alert('Please fill in all required fields');
-                return;
+        function startTest() {
+            // REPLACE THIS URL WITH YOUR GOOGLE FORM URL
+            const testUrl = 'https://forms.gle/YOUR_FORM_ID_HERE';
+            
+            // Open test in new tab
+            window.open(testUrl, '_blank');
+            
+            // Close modal
+            closeModal('testInfoModal');
+            
+            // Show confirmation
+            alert('SURVIVAL Test opened in new tab!\n\nGood luck! Remember:\n• You have 180 minutes\n• Test can be taken only ONCE\n• Results within 24 hours\n\nOnly the fittest survive! 💪');
+        }
+
+        let enrollmentType = 'direct';
+
+        function openEnrollModal(type) {
+            enrollmentType = type;
+            const enrollType = document.getElementById('enrollType');
+            const paymentAmount = document.getElementById('paymentAmount');
+            
+            if (type === 'direct') {
+                enrollType.textContent = 'Direct Enrollment - ₹10,000';
+                paymentAmount.textContent = '₹10,000';
             }
-
-            const classes = JSON.parse(localStorage.getItem(STORAGE_KEYS.CLASSES) || '[]');
-            classes.push({
-                id: Date.now(),
-                title,
-                subject,
-                video,
-                duration,
-                description,
-                uploadedBy: currentUser.email,
-                uploadedAt: new Date().toISOString()
-            });
-
-            localStorage.setItem(STORAGE_KEYS.CLASSES, JSON.stringify(classes));
             
-            document.getElementById('classSuccess').classList.remove('hidden');
-            setTimeout(() => {
-                closeModal('classModal');
-                document.getElementById('classSuccess').classList.add('hidden');
-                clearForm('class');
-                loadAllContent();
-            }, 1500);
+            openModal('enrollModal');
         }
 
-        function uploadNotes() {
-            const title = document.getElementById('notesTitle').value;
-            const subject = document.getElementById('notesSubject').value;
-            const file = document.getElementById('notesFile').value;
-            const description = document.getElementById('notesDescription').value;
-
-            if (!title || !file) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            const notes = JSON.parse(localStorage.getItem(STORAGE_KEYS.NOTES) || '[]');
-            notes.push({
-                id: Date.now(),
-                title,
-                subject,
-                file,
-                description,
-                uploadedBy: currentUser.email,
-                uploadedAt: new Date().toISOString()
-            });
-
-            localStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(notes));
+        // Handle Enrollment Form Submission
+        document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            document.getElementById('notesSuccess').classList.remove('hidden');
-            setTimeout(() => {
-                closeModal('notesModal');
-                document.getElementById('notesSuccess').classList.add('hidden');
-                clearForm('notes');
-                loadAllContent();
-            }, 1500);
-        }
-
-        function createAssignment() {
-            const title = document.getElementById('assignmentTitle').value;
-            const subject = document.getElementById('assignmentSubject').value;
-            const due = document.getElementById('assignmentDue').value;
-            const questions = document.getElementById('assignmentQuestions').value;
-            const xp = document.getElementById('assignmentXP').value;
-            const instructions = document.getElementById('assignmentInstructions').value;
-
-            if (!title || !due || !questions) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            const assignments = JSON.parse(localStorage.getItem(STORAGE_KEYS.ASSIGNMENTS) || '[]');
-            assignments.push({
-                id: Date.now(),
-                title,
-                subject,
-                due,
-                questions,
-                xp,
-                instructions,
-                createdBy: currentUser.email,
-                createdAt: new Date().toISOString()
-            });
-
-            localStorage.setItem(STORAGE_KEYS.ASSIGNMENTS, JSON.stringify(assignments));
+            const name = document.getElementById('studentName').value;
+            const email = document.getElementById('studentEmail').value;
+            const phone = document.getElementById('studentPhone').value;
+            const state = document.getElementById('studentState').value;
             
-            document.getElementById('assignmentSuccess').classList.remove('hidden');
-            setTimeout(() => {
-                closeModal('assignmentModal');
-                document.getElementById('assignmentSuccess').classList.add('hidden');
-                clearForm('assignment');
-                loadAllContent();
-            }, 1500);
-        }
-
-        function createDPP() {
-            const title = document.getElementById('dppTitle').value;
-            const subject = document.getElementById('dppSubject').value;
-            const questions = document.getElementById('dppQuestions').value;
-            const xp = document.getElementById('dppXP').value;
-            const content = document.getElementById('dppContent').value;
-
-            if (!title || !questions) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            const dpps = JSON.parse(localStorage.getItem(STORAGE_KEYS.DPPS) || '[]');
-            dpps.push({
-                id: Date.now(),
-                title,
-                subject,
-                questions,
-                xp,
-                content,
-                createdBy: currentUser.email,
-                createdAt: new Date().toISOString()
-            });
-
-            localStorage.setItem(STORAGE_KEYS.DPPS, JSON.stringify(dpps));
+            // Here you would normally send this to your backend
+            // For now, we'll show a success message
             
-            document.getElementById('dppSuccess').classList.remove('hidden');
-            setTimeout(() => {
-                closeModal('dppModal');
-                document.getElementById('dppSuccess').classList.add('hidden');
-                clearForm('dpp');
-                loadAllContent();
-            }, 1500);
-        }
-
-        function createTest() {
-            const title = document.getElementById('testTitle').value;
-            const subject = document.getElementById('testSubject').value;
-            const date = document.getElementById('testDate').value;
-            const duration = document.getElementById('testDuration').value;
-            const marks = document.getElementById('testMarks').value;
-            const instructions = document.getElementById('testInstructions').value;
-
-            if (!title || !date || !duration) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            const tests = JSON.parse(localStorage.getItem(STORAGE_KEYS.TESTS) || '[]');
-            tests.push({
-                id: Date.now(),
-                title,
-                subject,
-                date,
-                duration,
-                marks,
-                instructions,
-                createdBy: currentUser.email,
-                createdAt: new Date().toISOString()
-            });
-
-            localStorage.setItem(STORAGE_KEYS.TESTS, JSON.stringify(tests));
+            alert(`Thank you, ${name}!\n\nYour enrollment request has been received.\n\nWe'll send payment instructions to:\n${email}\n\nWithin 1 hour.\n\nAmount: ₹10,000\n\nTeam STRIVE X`);
             
-            document.getElementById('testSuccess').classList.remove('hidden');
-            setTimeout(() => {
-                closeModal('testModal');
-                document.getElementById('testSuccess').classList.add('hidden');
-                clearForm('test');
-                loadAllContent();
-            }, 1500);
-        }
-
-        function clearForm(type) {
-            const inputs = document.querySelectorAll(`#${type}Modal input, #${type}Modal textarea, #${type}Modal select`);
-            inputs.forEach(input => input.value = '');
-        }
-
-        function loadAllContent() {
-            loadClasses();
-            loadNotes();
-            loadAssignments();
-            loadDPPs();
-            loadTests();
-        }
-
-        function loadClasses() {
-            const classes = JSON.parse(localStorage.getItem(STORAGE_KEYS.CLASSES) || '[]');
-            const grid = document.getElementById('classesGrid');
+            // Close modal and reset form
+            closeModal('enrollModal');
+            document.getElementById('enrollmentForm').reset();
             
-            if (classes.length === 0) {
-                grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No classes available yet.</p>';
-                return;
-            }
-
-            grid.innerHTML = classes.map(cls => `
-                <div class="content-card">
-                    <div class="content-thumbnail">🎥</div>
-                    <div class="content-info">
-                        <h3 class="content-title">${cls.title}</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">${cls.subject} • ${cls.duration} min</p>
-                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">${cls.description || ''}</p>
-                        <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="window.open('${cls.video}', '_blank')">Watch Now</button>
-                        ${currentUser.isAdmin ? `<button class="delete-btn" onclick="deleteItem('${STORAGE_KEYS.CLASSES}', ${cls.id})">Delete</button>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function loadNotes() {
-            const notes = JSON.parse(localStorage.getItem(STORAGE_KEYS.NOTES) || '[]');
-            const grid = document.getElementById('notesGrid');
-            
-            if (notes.length === 0) {
-                grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No notes available yet.</p>';
-                return;
-            }
-
-            grid.innerHTML = notes.map(note => `
-                <div class="content-card">
-                    <div class="content-thumbnail">📄</div>
-                    <div class="content-info">
-                        <h3 class="content-title">${note.title}</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">${note.subject}</p>
-                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">${note.description || ''}</p>
-                        <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="window.open('${note.file}', '_blank')">Download</button>
-                        ${currentUser.isAdmin ? `<button class="delete-btn" onclick="deleteItem('${STORAGE_KEYS.NOTES}', ${note.id})">Delete</button>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function loadAssignments() {
-            const assignments = JSON.parse(localStorage.getItem(STORAGE_KEYS.ASSIGNMENTS) || '[]');
-            const grid = document.getElementById('assignmentsGrid');
-            
-            if (assignments.length === 0) {
-                grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No assignments available yet.</p>';
-                return;
-            }
-
-            grid.innerHTML = assignments.map(asn => `
-                <div class="content-card">
-                    <div class="content-info">
-                        <h3 class="content-title">${asn.title}</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">${asn.subject} • Due: ${new Date(asn.due).toLocaleDateString()}</p>
-                        <div class="content-meta">
-                            <span>${asn.questions} Questions</span>
-                            <span>+${asn.xp} XP</span>
-                        </div>
-                        <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="alert('Assignment details:\\n\\n${asn.instructions.replace(/'/g, "\\'")}')">View Details</button>
-                        ${currentUser.isAdmin ? `<button class="delete-btn" onclick="deleteItem('${STORAGE_KEYS.ASSIGNMENTS}', ${asn.id})">Delete</button>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function loadDPPs() {
-            const dpps = JSON.parse(localStorage.getItem(STORAGE_KEYS.DPPS) || '[]');
-            const grid = document.getElementById('dppsGrid');
-            
-            if (dpps.length === 0) {
-                grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No DPPs available yet.</p>';
-                return;
-            }
-
-            grid.innerHTML = dpps.map(dpp => `
-                <div class="content-card">
-                    <div class="content-info">
-                        <h3 class="content-title">${dpp.title}</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">${dpp.subject}</p>
-                        <div class="content-meta">
-                            <span>${dpp.questions} Questions</span>
-                            <span>+${dpp.xp} XP</span>
-                        </div>
-                        <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="alert('DPP Content:\\n\\n${dpp.content.replace(/'/g, "\\'")}')">Start DPP</button>
-                        ${currentUser.isAdmin ? `<button class="delete-btn" onclick="deleteItem('${STORAGE_KEYS.DPPS}', ${dpp.id})">Delete</button>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function loadTests() {
-            const tests = JSON.parse(localStorage.getItem(STORAGE_KEYS.TESTS) || '[]');
-            const grid = document.getElementById('testsGrid');
-            
-            if (tests.length === 0) {
-                grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 2rem; grid-column: 1/-1;">No tests available yet.</p>';
-                return;
-            }
-
-            grid.innerHTML = tests.map(test => `
-                <div class="content-card">
-                    <div class="content-info">
-                        <h3 class="content-title">${test.title}</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">${test.subject} • ${new Date(test.date).toLocaleString()}</p>
-                        <div class="content-meta">
-                            <span>${test.duration} min</span>
-                            <span>${test.marks} marks</span>
-                        </div>
-                        <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="alert('Test Instructions:\\n\\n${test.instructions.replace(/'/g, "\\'")}')">View Test</button>
-                        ${currentUser.isAdmin ? `<button class="delete-btn" onclick="deleteItem('${STORAGE_KEYS.TESTS}', ${test.id})">Delete</button>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function deleteItem(storageKey, itemId) {
-            if (!confirm('Are you sure you want to delete this item?')) return;
-            
-            const items = JSON.parse(localStorage.getItem(storageKey) || '[]');
-            const filtered = items.filter(item => item.id !== itemId);
-            localStorage.setItem(storageKey, JSON.stringify(filtered));
-            loadAllContent();
-        }
-
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function viewStudents() {
-            alert('Student management feature coming soon!\n\nThis will show:\n- Total students\n- Active students\n- Student progress\n- Performance analytics');
-        }
-
-        function viewAnalytics() {
-            const classes = JSON.parse(localStorage.getItem(STORAGE_KEYS.CLASSES) || '[]');
-            const notes = JSON.parse(localStorage.getItem(STORAGE_KEYS.NOTES) || '[]');
-            const assignments = JSON.parse(localStorage.getItem(STORAGE_KEYS.ASSIGNMENTS) || '[]');
-            const dpps = JSON.parse(localStorage.getItem(STORAGE_KEYS.DPPS) || '[]');
-            const tests = JSON.parse(localStorage.getItem(STORAGE_KEYS.TESTS) || '[]');
-
-            alert(`📊 Platform Analytics\n\n` +
-                  `📹 Total Classes: ${classes.length}\n` +
-                  `📝 Total Notes: ${notes.length}\n` +
-                  `📋 Total Assignments: ${assignments.length}\n` +
-                  `📊 Total DPPs: ${dpps.length}\n` +
-                  `🎯 Total Tests: ${tests.length}\n\n` +
-                  `More detailed analytics coming soon!`);
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
+            // You can add code here to send this data to Google Sheets or your email
         });
 
-        ['emailInput', 'passwordInput'].forEach(id => {
-            document.getElementById(id)?.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') login();
-            });
-        });
-
+        // Close modal on outside click
         document.querySelectorAll('.modal').forEach(modal => {
             modal.addEventListener('click', function(e) {
                 if (e.target === this) {
@@ -1436,7 +877,7 @@
             });
         });
 
-        console.log('STRIVE X PWA - Ready to Install! 📱');
+        console.log('STRIVE X - Survival of the Fittest! 🎯');
     </script>
 </body>
 </html>
